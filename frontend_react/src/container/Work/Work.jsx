@@ -7,8 +7,6 @@ import {urlFor, client} from "../../client";
 import "./Work.scss";
 
 
-import "./Work.scss"
-
 const Work = () => {
 
   const [activeFilter, setActiveFilter] = useState('All')
@@ -27,6 +25,19 @@ const Work = () => {
   
 
   const handleWorkFilter = (item) => {
+    setActiveFilter(item);
+    setAnimateCard([{y:100, opacity: 0}])
+
+    setTimeout(()=>{
+      setAnimateCard([{y:0, opaacity: 1}])
+
+      if(item ==='All'){
+        setFilterWork(works);
+      } else{
+        setFilterWork(works.filter((work)=> work.tags.includes(item)))
+      }
+    },500);
+    
 
   }
 
@@ -35,7 +46,7 @@ const Work = () => {
      <h2 className="head-text">My <span>Portfolio</span><br/></h2>
 
      <div className="app__work-filter">
-       {["UI/UX" , "Web App", "Mobile App", "React JS" , "All"].map((item,index)=>(
+       {["UI/UX" , "Web App", "Responsive", "React JS" , "All"].map((item,index)=>(
          <div key={index} onClick={()=> handleWorkFilter(item)} className = {`app__work-filter-item app_flex p-text ${activeFilter === item ? 'item-active' : ''}`}> 
            {item}
          </div>

@@ -25,7 +25,7 @@ const About = () => {
   
   return (
     <>
-    <h2 className="head-text">I Know That <span>Good Web Apps</span><br/> means <span>Good Business</span></h2>
+    <h2 className="head-text">About <span>Me</span><br/></h2>
     <div className="app__profiles">
       {abouts.map((about,index)=>(
         <motion.div
